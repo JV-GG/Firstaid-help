@@ -132,7 +132,7 @@ export default function TypeDetailPage({ params }: PageProps) {
             
             <div className="space-y-6">
               {typeData.steps.map((step) => (
-                <StepCard key={step.stepNumber} step={step} />
+                <StepCard key={step.stepNumber} step={step} categorySlug={category.slug} typeId={typeData.id} />
               ))}
             </div>
           </div>
