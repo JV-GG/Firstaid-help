@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { 
   Bone, 
@@ -42,6 +43,7 @@ interface CategoryCardProps {
   color: string;
   description: string;
   formula: string;
+  bgImage?: string | null;
 }
 
 export default function CategoryCard({
@@ -51,6 +53,7 @@ export default function CategoryCard({
   color,
   description,
   formula,
+  bgImage,
 }: CategoryCardProps) {
   return (
     <Link href={`/category/${slug}`} className="block h-full">
@@ -61,15 +64,28 @@ export default function CategoryCard({
           boxShadow: `0 10px 30px -10px rgba(0, 229, 196, 0.15), 0 1px 1px 0 rgba(255, 255, 255, 0.05) inset`,
         }}
         transition={{ type: "spring", stiffness: 300, damping: 20 }}
-        className="relative h-full p-6 rounded-2xl bg-white/[0.03] border border-white/[0.06] backdrop-blur-md flex flex-col justify-between overflow-hidden group hover:border-accent-teal/30 hover:bg-white/[0.04]"
+        className="relative h-full p-6 rounded-2xl glass-premium border border-white/[0.06] flex flex-col justify-between overflow-hidden group hover:border-accent-teal/40 hover:shadow-[0_0_30px_rgba(0,229,196,0.15)] transition-all duration-500"
       >
+        {/* Optional Background Image */}
+        {bgImage && (
+          <div className="bg-image-overlay">
+            <Image
+              src={`/images/${bgImage}.png`}
+              alt={`${name} background`}
+              fill
+              className="object-cover object-center"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            />
+          </div>
+        )}
+
         {/* Color-coded subtle glow in top-right */}
         <div 
-          className="absolute -top-12 -right-12 w-24 h-24 rounded-full blur-2xl opacity-10 group-hover:opacity-25 transition-opacity duration-300 pointer-events-none"
+          className="absolute -top-12 -right-12 w-24 h-24 rounded-full blur-2xl opacity-10 group-hover:opacity-30 transition-opacity duration-500 pointer-events-none"
           style={{ backgroundColor: color }}
         />
 
-        <div>
+        <div className="relative z-10">
           {/* Header Row */}
           <div className="flex items-start justify-between mb-4">
             <div 
@@ -94,8 +110,8 @@ export default function CategoryCard({
         </div>
 
         {/* Action/Footer Link Indicator */}
-        <div className="mt-5 flex items-center justify-between text-xs font-mono text-text-muted group-hover:text-accent-teal transition-colors duration-300">
-          <span>VIEW GUIDELINES</span>
+        <div className="relative z-10 mt-6 flex items-center justify-between text-xs font-mono text-text-muted group-hover:text-accent-teal transition-colors duration-300">
+          <span className="tracking-widest">VIEW GUIDELINES</span>
           <Plus className="w-4 h-4 transform group-hover:rotate-90 transition-transform duration-300" />
         </div>
       </motion.div>

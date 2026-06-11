@@ -86,7 +86,7 @@ export default function CategoryPage({ params }: PageProps) {
           initial="hidden"
           animate="visible"
           variants={blurIn}
-          className="p-6 md:p-8 rounded-3xl bg-white/[0.02] border border-white/[0.06] backdrop-blur-md relative overflow-hidden mb-10"
+          className="p-6 md:p-8 rounded-3xl glass-premium relative overflow-hidden mb-10"
         >
           {/* Decorative Glow */}
           <div 
@@ -152,12 +152,12 @@ export default function CategoryPage({ params }: PageProps) {
                 <Link href={`/category/${category.slug}/${type.id}`}>
                   <motion.div
                     whileHover={{ 
-                      scale: 1.01,
-                      y: -3,
-                      boxShadow: "0 10px 25px -10px rgba(0, 229, 196, 0.1), 0 1px 1px 0 rgba(255,255,255,0.03) inset"
+                      scale: 1.02,
+                      y: -4,
+                      boxShadow: "0 15px 30px -10px rgba(0, 229, 196, 0.15), 0 1px 1px 0 rgba(255,255,255,0.05) inset"
                     }}
                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                    className="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-accent-teal/20 backdrop-blur-md flex flex-col justify-between h-full group"
+                    className="p-5 rounded-2xl glass-premium flex flex-col justify-between h-full group hover:border-accent-teal/40 transition-all duration-300"
                   >
                     <div>
                       {/* Badge and Title Row */}

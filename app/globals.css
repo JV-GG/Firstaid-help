@@ -95,3 +95,44 @@ body {
 .animate-heart-pulse {
   animation: heart-pulse 2s infinite ease-in-out;
 }
+
+/* Premium Image Background Utilities */
+.bg-image-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.15;
+  mix-blend-mode: screen;
+  transition: opacity 0.5s ease;
+}
+
+.group:hover .bg-image-overlay {
+  opacity: 0.3;
+}
+
+/* Gradient Fade Utilities */
+.fade-bottom {
+  mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+}
+
+.fade-edges {
+  mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+  -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+}
+
+/* Enhanced Glass */
+.glass-premium {
+  background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.05);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+.text-glow-teal {
+  text-shadow: 0 0 15px rgba(0, 229, 196, 0.4);
+}
