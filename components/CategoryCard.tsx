@@ -66,18 +66,7 @@ export default function CategoryCard({
         transition={{ type: "spring", stiffness: 300, damping: 20 }}
         className="relative h-full p-6 rounded-2xl glass-premium border border-white/[0.06] flex flex-col justify-between overflow-hidden group hover:border-accent-teal/40 hover:shadow-[0_0_30px_rgba(0,229,196,0.15)] transition-all duration-500"
       >
-        {/* Optional Background Image */}
-        {bgImage && (
-          <div className="bg-image-overlay">
-            <Image
-              src={`/images/${bgImage}.png`}
-              alt={`${name} background`}
-              fill
-              className="object-cover object-center"
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            />
-          </div>
-        )}
+
 
         {/* Color-coded subtle glow in top-right */}
         <div 
