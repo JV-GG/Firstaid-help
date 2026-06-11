@@ -15,16 +15,7 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative w-full h-[70vh] md:h-[60vh] flex flex-col items-center justify-center text-center px-6 border-b border-white/[0.04] bg-base overflow-hidden">
         
-        {/* Premium Abstract Background Image */}
-        <div className="absolute inset-0 w-full h-full opacity-40 fade-bottom mix-blend-screen pointer-events-none">
-          <Image
-            src="/images/hero_bg_abstract.png"
-            alt="Abstract medical background"
-            fill
-            className="object-cover object-center"
-            priority
-          />
-        </div>
+
         
         {/* Gradient Overlay for Text Readability */}
         <div className="absolute inset-0 w-full h-full bg-gradient-to-t from-base via-base/80 to-transparent pointer-events-none"></div>
