@@ -1,27 +1,66 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageSquare, X, Send, AlertCircle, Clock } from "lucide-react";
 import { ChatMessage } from "@/lib/minimax";
 
-// Helper function to format basic Markdown bold (**text**) and newlines in message text
-function formatMessageContent(content: string) {
+function parseBold(text: string, baseKey: string): React.ReactNode[] {
+  const parts = text.split("**");
+  return parts.map((part, idx) => {
+    if (idx % 2 === 1) {
+      return (
+        <strong key={`${baseKey}-bold-${idx}`} className="font-bold text-accent-teal">
+          {part}
+        </strong>
+      );
+    }
+    return <span key={`${baseKey}-span-${idx}`}>{part}</span>;
+  });
+}
+
+// Helper function to format Markdown links ([text](url)) and bold (**text**) in message text
+function formatMessageContent(content: string, onLinkClick?: () => void) {
   const lines = content.split("\n");
   return lines.map((line, lineIdx) => {
-    const parts = line.split("**");
+    const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
+    let match;
+    let lastIndex = 0;
+    const elements: React.ReactNode[] = [];
+    let keyCounter = 0;
+
+    while ((match = linkRegex.exec(line)) !== null) {
+      const plainTextBefore = line.substring(lastIndex, match.index);
+      if (plainTextBefore) {
+        elements.push(...parseBold(plainTextBefore, `plain-${lineIdx}-${keyCounter++}`));
+      }
+
+      const linkText = match[1];
+      const linkUrl = match[2];
+
+      elements.push(
+        <Link
+          key={`link-${lineIdx}-${keyCounter++}`}
+          href={linkUrl}
+          onClick={onLinkClick}
+          className="text-accent-teal hover:underline font-bold"
+        >
+          {linkText}
+        </Link>
+      );
+
+      lastIndex = linkRegex.lastIndex;
+    }
+
+    const remainingText = line.substring(lastIndex);
+    if (remainingText) {
+      elements.push(...parseBold(remainingText, `remain-${lineIdx}-${keyCounter++}`));
+    }
+
     return (
-      <div key={lineIdx} className={lineIdx > 0 ? "mt-1.5" : ""}>
-        {parts.map((part, partIdx) => {
-          if (partIdx % 2 === 1) {
-            return (
-              <strong key={partIdx} className="font-bold text-accent-teal">
-                {part}
-              </strong>
-            );
-          }
-          return <span key={partIdx}>{part}</span>;
-        })}
+      <div key={lineIdx} className={lineIdx > 0 ? "mt-1.5 min-h-[0.5rem]" : "min-h-[0.5rem]"}>
+        {elements.length > 0 ? elements : <span>&nbsp;</span>}
       </div>
     );
   });
@@ -296,7 +335,7 @@ export default function ChatDrawer() {
                       >
                         {/* Render formatted markdown bold and newlines */}
                         <div className="font-sans">
-                          {formatMessageContent(msg.content)}
+                          {formatMessageContent(msg.content, () => setIsOpen(false))}
                         </div>
                       </div>
                     </div>

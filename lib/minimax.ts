@@ -23,38 +23,92 @@ export async function getCoPilotResponse(
   if (mode === "local") {
     const match = findLocalMatch(userMessage);
     if (match) {
-      return { message: formatLocalResponse(match), source: "local" };
+      return { message: injectProtocolHyperlinks(formatLocalResponse(match)), source: "local" };
     }
-    return { message: getGeneralLocalResponse(), source: "local" };
+    return { message: injectProtocolHyperlinks(getGeneralLocalResponse()), source: "local" };
   }
 
   // 2. Hybrid Mode (Try matching local guide first)
   if (mode === "hybrid") {
     const match = findLocalMatch(userMessage);
     if (match) {
-      return { message: formatLocalResponse(match), source: "local" };
+      return { message: injectProtocolHyperlinks(formatLocalResponse(match)), source: "local" };
     }
   }
 
   // 3. AI Mode or Hybrid with no local match -> Call MiniMax API
   try {
     const reply = await getMiniMaxResponse(messages);
-    return { message: reply, source: "ai" };
+    return { message: injectProtocolHyperlinks(reply), source: "ai" };
   } catch (err) {
     console.warn("API call failed, falling back to local database:", err);
     // Fail-safe local fallback
     const match = findLocalMatch(userMessage);
     if (match) {
       return { 
-        message: `*(Offline / Local Fallback)*\n\n${formatLocalResponse(match)}`, 
+        message: `*(Offline / Local Fallback)*\n\n${injectProtocolHyperlinks(formatLocalResponse(match))}`, 
         source: "local" 
       };
     }
     return { 
-      message: `*(Offline / Local Fallback)*\n\n${getGeneralLocalResponse()}`, 
+      message: `*(Offline / Local Fallback)*\n\n${injectProtocolHyperlinks(getGeneralLocalResponse())}`, 
       source: "local" 
     };
   }
+}
+
+/**
+ * Scans response text for keywords matching our clinical database
+ * and cleanly appends quick links to direct users to protocol pages.
+ */
+export function injectProtocolHyperlinks(text: string): string {
+  const lowercaseText = text.toLowerCase();
+  const matchedProtocols: { name: string; url: string }[] = [];
+
+  for (const cat of firstAidCategories) {
+    for (const type of cat.types) {
+      // Create keywords to search for
+      const keywords = [
+        type.name.toLowerCase(),
+        type.id.toLowerCase().replace("-", " ")
+      ];
+
+      // Add common synonyms
+      if (type.id === "cardiac-arrest") {
+        keywords.push("cpr");
+      } else if (type.id === "stroke") {
+        keywords.push("fast protocol");
+      }
+
+      // Check for word boundaries of keywords to ensure high matching accuracy
+      const matchesKeyword = keywords.some(keyword => {
+        const regex = new RegExp(`\\b${keyword}\\b`, "i");
+        return regex.test(lowercaseText);
+      });
+
+      if (matchesKeyword) {
+        matchedProtocols.push({
+          name: type.name,
+          url: `/category/${cat.slug}/${type.id}`
+        });
+      }
+    }
+  }
+
+  // Deduplicate matched protocols by URL and limit to top 3 links to keep it clean
+  const uniqueMatches = Array.from(
+    new Map(matchedProtocols.map(item => [item.url, item])).values()
+  ).slice(0, 3);
+
+  if (uniqueMatches.length > 0) {
+    let linksSection = "\n\n---\n**🔗 Quick Protocol Links:**\n";
+    uniqueMatches.forEach(match => {
+      linksSection += `- [View ${match.name} Protocol](${match.url})\n`;
+    });
+    return text + linksSection;
+  }
+
+  return text;
 }
 
 /**
