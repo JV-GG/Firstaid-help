@@ -67,14 +67,19 @@ export default function StepCard({ step, categorySlug, typeId }: StepCardProps) 
       {/* Stylized Neon Medical SVG Illustration OR Actual Photo */}
       <div className="w-full md:w-56 h-40 rounded-xl bg-base/50 border border-white/[0.04] relative overflow-hidden flex items-center justify-center shrink-0">
         {!imgError && categorySlug && typeId ? (
-          <Image
-            src={imageSrc}
-            alt={step.imagePrompt}
-            fill
-            className="object-cover object-center opacity-90 transition-opacity duration-300 group-hover:opacity-100 mix-blend-screen"
-            sizes="(max-width: 768px) 100vw, 224px"
-            onError={() => setImgError(true)}
-          />
+          <>
+            <Image
+              src={imageSrc}
+              alt={step.imagePrompt}
+              fill
+              className="object-cover object-center opacity-90 transition-opacity duration-300 group-hover:opacity-100 mix-blend-screen"
+              sizes="(max-width: 768px) 100vw, 224px"
+              onError={() => setImgError(true)}
+            />
+            <div className="absolute bottom-1.5 left-1.5 right-1.5 bg-base/80 backdrop-blur-[2px] px-1.5 py-0.5 rounded text-[8px] tracking-tight border border-white/5 uppercase text-center text-text-muted select-none pointer-events-none z-10 font-mono">
+              For illustration purposes only
+            </div>
+          </>
         ) : (
           <>
             {/* Medical Grid Pattern */}

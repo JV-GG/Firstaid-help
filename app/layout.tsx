@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import Footer from "@/components/Footer";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -44,7 +45,11 @@ export default function RootLayout({
         <main className="flex-1 flex flex-col relative z-10">
           {children}
         </main>
+
+        {/* Global Clinical Footer */}
+        <Footer />
       </body>
     </html>
   );
 }
+
