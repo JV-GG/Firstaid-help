@@ -29,11 +29,13 @@ function formatMessageContent(content: string) {
 
 export default function ChatDrawer() {
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState<({ id: string; timestamp: string } & ChatMessage)[]>([
+  const [mode, setMode] = useState<"hybrid" | "ai" | "local">("hybrid");
+  const [messages, setMessages] = useState<({ id: string; timestamp: string; source?: "local" | "ai" } & ChatMessage)[]>([
     {
       id: "welcome",
       role: "assistant",
       content: "Hello! I am your First Aid Assistant. How can I assist you with emergency protocols today? You can ask me about CPR, choking, stroke signs, or burns.",
+      source: "local",
       timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
     }
   ]);
@@ -92,7 +94,7 @@ export default function ChatDrawer() {
   const handleSendMessage = async (textToSend: string) => {
     if (!textToSend.trim() || isLoading) return;
 
-    const userMsg: ({ id: string; timestamp: string } & ChatMessage) = {
+    const userMsg: ({ id: string; timestamp: string; source?: "local" | "ai" } & ChatMessage) = {
       id: Math.random().toString(36).substring(7),
       role: "user",
       content: textToSend.trim(),
@@ -108,11 +110,11 @@ export default function ChatDrawer() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          // Map to standard ChatMessage structure (excluding id/timestamp for API compliance)
           messages: [...messages, userMsg].map(m => ({
             role: m.role,
             content: m.content
-          }))
+          })),
+          mode: mode
         })
       });
 
@@ -127,6 +129,7 @@ export default function ChatDrawer() {
         id: Math.random().toString(36).substring(7),
         role: "assistant",
         content: data.message,
+        source: data.source,
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
       }]);
     } catch (err: any) {
@@ -178,25 +181,71 @@ export default function ChatDrawer() {
               className="relative w-full md:w-[420px] h-full md:h-[600px] max-h-full md:max-h-[85vh] bg-surface border-t md:border border-white/10 md:rounded-2xl shadow-2xl flex flex-col pointer-events-auto overflow-hidden z-10"
             >
               {/* Header */}
-              <div className="flex items-center justify-between p-4 border-b border-white/5 bg-white/[0.01]">
-                <div className="flex items-center gap-2.5">
-                  <div className="w-2.5 h-2.5 rounded-full bg-accent-teal animate-pulse" />
-                  <div>
-                    <h2 className="font-display font-bold text-sm text-text-primary tracking-wide uppercase">
-                      FIRST AID CO-PILOT
-                    </h2>
-                    <p className="text-[10px] text-accent-teal font-mono tracking-wider uppercase">
-                      Certified Protocols AI
-                    </p>
+              <div className="flex flex-col p-4 border-b border-white/5 bg-white/[0.01] gap-3">
+                <div className="flex items-center justify-between w-full">
+                  <div className="flex items-center gap-2.5">
+                    <div className="w-2.5 h-2.5 rounded-full bg-accent-teal animate-pulse" />
+                    <div>
+                      <h2 className="font-display font-bold text-sm text-text-primary tracking-wide uppercase">
+                        FIRST AID CO-PILOT
+                      </h2>
+                      <p className="text-[10px] text-accent-teal font-mono tracking-wider uppercase">
+                        Certified Protocols AI
+                      </p>
+                    </div>
                   </div>
+                  <button
+                    onClick={() => setIsOpen(false)}
+                    className="p-1.5 rounded-lg hover:bg-white/5 text-text-muted hover:text-text-primary transition-all cursor-pointer"
+                    aria-label="Close Chat"
+                  >
+                    <X className="w-5 h-5" />
+                  </button>
                 </div>
-                <button
-                  onClick={() => setIsOpen(false)}
-                  className="p-1.5 rounded-lg hover:bg-white/5 text-text-muted hover:text-text-primary transition-all cursor-pointer"
-                  aria-label="Close Chat"
-                >
-                  <X className="w-5 h-5" />
-                </button>
+
+                {/* Mode Segmented Toggle Switch */}
+                <div className="grid grid-cols-3 bg-white/[0.03] border border-white/[0.06] rounded-lg p-0.5 text-[9px] font-mono select-none">
+                  <button
+                    type="button"
+                    onClick={() => setMode("hybrid")}
+                    className={`py-1.5 rounded text-center transition-all cursor-pointer ${
+                      mode === "hybrid"
+                        ? "bg-accent-teal text-[#070b16] font-bold shadow-[0_0_10px_rgba(0,229,196,0.2)]"
+                        : "text-text-muted hover:text-text-primary"
+                    }`}
+                  >
+                    🤖 SMART AUTO
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setMode("ai")}
+                    className={`py-1.5 rounded text-center transition-all cursor-pointer ${
+                      mode === "ai"
+                        ? "bg-accent-teal text-[#070b16] font-bold shadow-[0_0_10px_rgba(0,229,196,0.2)]"
+                        : "text-text-muted hover:text-text-primary"
+                    }`}
+                  >
+                    ⚡ LIVE AI
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setMode("local")}
+                    className={`py-1.5 rounded text-center transition-all cursor-pointer ${
+                      mode === "local"
+                        ? "bg-accent-teal text-[#070b16] font-bold shadow-[0_0_10px_rgba(0,229,196,0.2)]"
+                        : "text-text-muted hover:text-text-primary"
+                    }`}
+                  >
+                    📋 OFFLINE MANUAL
+                  </button>
+                </div>
+
+                {/* Subtitle helper description */}
+                <p className="text-[9px] font-mono text-text-muted/80 leading-relaxed text-center px-1">
+                  {mode === "hybrid" && "🤖 Auto-routes standard cases to clinical manual, and custom scenarios to AI."}
+                  {mode === "ai" && "⚡ Runs all questions directly through the live AI Co-Pilot."}
+                  {mode === "local" && "📋 Strictly accesses pre-verified offline protocols database."}
+                </p>
               </div>
 
               {/* Toast Error Alert */}
@@ -225,6 +274,15 @@ export default function ChatDrawer() {
                     >
                       <div className="flex items-center gap-1.5 text-[9px] font-mono text-text-muted px-1.5">
                         <span>{isAssistant ? "AI ASSISTANT" : "PATIENT"}</span>
+                        {isAssistant && msg.source && (
+                          <span className={`px-1 py-0.5 rounded-[4px] border uppercase text-[8px] font-bold ${
+                            msg.source === "ai" 
+                              ? "bg-accent-teal/10 border-accent-teal/35 text-accent-teal" 
+                              : "bg-moderate-yellow/10 border-moderate-yellow/30 text-moderate-yellow"
+                          }`}>
+                            {msg.source === "ai" ? "⚡ AI Co-Pilot" : "💾 Local Guide"}
+                          </span>
+                        )}
                         <Clock className="w-3 h-3 text-white/10" />
                         <span>{msg.timestamp}</span>
                       </div>

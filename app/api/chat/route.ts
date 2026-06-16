@@ -1,10 +1,13 @@
 import { NextResponse } from "next/server";
-import { getMiniMaxResponse, ChatMessage } from "@/lib/minimax";
+import { getCoPilotResponse, ChatMessage } from "@/lib/minimax";
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { messages } = body as { messages: ChatMessage[] };
+    const { messages, mode } = body as { 
+      messages: ChatMessage[]; 
+      mode?: "hybrid" | "ai" | "local" 
+    };
 
     if (!messages || !Array.isArray(messages)) {
       return NextResponse.json(
@@ -13,10 +16,10 @@ export async function POST(request: Request) {
       );
     }
 
-    const reply = await getMiniMaxResponse(messages);
-    return NextResponse.json({ message: reply });
+    const result = await getCoPilotResponse(messages, mode || "hybrid");
+    return NextResponse.json({ message: result.message, source: result.source });
   } catch (error: any) {
-    console.error("API Route /api/chat error:", error);
+    console.warn("API Route /api/chat error:", error);
     return NextResponse.json(
       { error: error.message || "Failed to generate first aid response." },
       { status: 500 }
