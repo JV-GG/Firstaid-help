@@ -7,56 +7,132 @@ export interface ChatMessage {
 
 export async function getMiniMaxResponse(messages: ChatMessage[]): Promise<string> {
   const apiKey = process.env.MINIMAX_API_KEY || process.env.NEXT_PUBLIC_MINIMAX_API_KEY || "";
+  const baseUrl = process.env.MINIMAX_BASE_URL || "";
+  const model = process.env.MINIMAX_MODEL || "MiniMax-M2.7";
 
   try {
     if (!apiKey) {
       throw new Error("MiniMax API key is not configured.");
     }
 
-    const systemPrompt: ChatMessage = {
-      role: "system",
-      content: "You are a certified first aid assistant. Give clear, calm, step-by-step emergency guidance. Always remind users to call emergency services for serious situations. Keep responses concise but complete. Format your response clearly using markdown bullet points or steps."
-    };
+    const systemPromptContent = "You are a certified first aid assistant. Give clear, calm, step-by-step emergency guidance. Keep responses concise but complete. Format your response clearly using markdown bullet points or steps. IMPORTANT: Always instruct the user to call 999 for emergency services if a serious situation is detected. Do NOT suggest 911, 112, or any other number, as the emergency services hotline is strictly 999.";
 
-    // Ensure system prompt is first in the list
-    const apiMessages = [systemPrompt, ...messages.filter(m => m.role !== "system")];
+    if (baseUrl) {
+      // 1. Anthropic-compatible Proxy Route (like SignalTrade uses)
+      const apiMessages: { role: "user" | "assistant"; content: string }[] = [];
+      for (const m of messages) {
+        if (m.role !== "user" && m.role !== "assistant") continue;
+        const last = apiMessages[apiMessages.length - 1];
+        if (last && last.role === m.role) {
+          last.content += "\n" + m.content;
+        } else {
+          apiMessages.push({
+            role: m.role as "user" | "assistant",
+            content: m.content
+          });
+        }
+      }
 
-    const response = await fetch("https://api.minimax.chat/v1/text/chatcompletion_v2", {
-      method: "POST",
-      headers: {
-        "Authorization": `Bearer ${apiKey}`,
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        model: "MiniMax-M2.7", // specified by user
-        messages: apiMessages.map(m => ({
-          role: m.role,
-          content: m.content
-        })),
-        temperature: 0.2, // lower temperature for more deterministic/factual first aid advice
-        max_tokens: 1024
-      })
-    });
+      while (apiMessages.length > 0 && apiMessages[0].role !== "user") {
+        apiMessages.shift();
+      }
 
-    if (!response.ok) {
-      const errorText = await response.text();
-      throw new Error(`MiniMax API error: ${response.status} ${response.statusText} - ${errorText}`);
+      if (apiMessages.length === 0) {
+        throw new Error("No user messages found.");
+      }
+
+      const response = await fetch(`${baseUrl.replace(/\/$/, "")}/v1/messages`, {
+        method: "POST",
+        headers: {
+          "x-api-key": apiKey,
+          "anthropic-version": "2023-06-01",
+          "content-type": "application/json"
+        },
+        body: JSON.stringify({
+          model: model,
+          max_tokens: 1024,
+          system: systemPromptContent,
+          messages: apiMessages,
+          temperature: 0.2
+        })
+      });
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(`MiniMax Proxy error: ${response.status} ${response.statusText} - ${errorText}`);
+      }
+
+      const data = await response.json();
+      console.log("MiniMax Proxy raw response:", JSON.stringify(data));
+
+      let content = "";
+      if (data.content && Array.isArray(data.content)) {
+        for (const block of data.content) {
+          if (block.type === "text") {
+            content = block.text;
+            break;
+          } else if (block.type === "thinking") {
+            content = block.thinking || block.text || "";
+          }
+        }
+      }
+
+      if (!content && data.content?.[0]?.text) {
+        content = data.content[0].text;
+      }
+
+      if (!content) {
+        throw new Error("Empty response received from MiniMax Proxy.");
+      }
+
+      return content;
+    } else {
+      // 2. Standard Official MiniMax Route
+      const systemPrompt: ChatMessage = {
+        role: "system",
+        content: systemPromptContent
+      };
+
+      // Ensure system prompt is first in the list
+      const apiMessages = [systemPrompt, ...messages.filter(m => m.role !== "system")];
+
+      const response = await fetch("https://api.minimax.chat/v1/text/chatcompletion_v2", {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${apiKey}`,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          model: model,
+          messages: apiMessages.map(m => ({
+            role: m.role,
+            content: m.content
+          })),
+          temperature: 0.2, // lower temperature for more deterministic/factual first aid advice
+          max_tokens: 1024
+        })
+      });
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(`MiniMax API error: ${response.status} ${response.statusText} - ${errorText}`);
+      }
+
+      const data = await response.json();
+      console.log("MiniMax API raw response data:", JSON.stringify(data));
+
+      if (data.base_resp && data.base_resp.status_code !== 0) {
+        throw new Error(`MiniMax API error: ${data.base_resp.status_msg} (Code ${data.base_resp.status_code})`);
+      }
+
+      const content = data.choices?.[0]?.message?.content || "";
+      
+      if (!content) {
+        throw new Error("Empty response received from MiniMax API choices payload.");
+      }
+
+      return content;
     }
-
-    const data = await response.json();
-    console.log("MiniMax API raw response data:", JSON.stringify(data));
-
-    if (data.base_resp && data.base_resp.status_code !== 0) {
-      throw new Error(`MiniMax API error: ${data.base_resp.status_msg} (Code ${data.base_resp.status_code})`);
-    }
-
-    const content = data.choices?.[0]?.message?.content || "";
-    
-    if (!content) {
-      throw new Error("Empty response received from MiniMax API choices payload.");
-    }
-
-    return content;
   } catch (error) {
     console.warn("Error calling MiniMax API (falling back to local offline responder):", error);
     return getLocalFallbackResponse(messages);
