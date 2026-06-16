@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter, Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/Footer";
+import ChatDrawer from "@/components/ChatDrawer";
+import QuickAccessBar from "@/components/QuickAccessBar";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -48,6 +50,10 @@ export default function RootLayout({
 
         {/* Global Clinical Footer */}
         <Footer />
+
+        {/* Global Floating Components */}
+        <ChatDrawer />
+        <QuickAccessBar />
       </body>
     </html>
   );

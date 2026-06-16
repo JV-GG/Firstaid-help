@@ -5,8 +5,6 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowLeft, Shield, AlertTriangle, Scale, BookOpen, Eye } from "lucide-react";
 import BreadcrumbNav from "@/components/BreadcrumbNav";
-import ChatDrawer from "@/components/ChatDrawer";
-import QuickAccessBar from "@/components/QuickAccessBar";
 
 export default function TermsAndConditionsPage() {
   const blurIn = {
@@ -86,7 +84,7 @@ export default function TermsAndConditionsPage() {
               <span>Critical Emergency Notice</span>
             </div>
             <p className="text-xs md:text-sm text-text-primary leading-relaxed">
-              THIS PLATFORM IS NOT AN EMERGENCY RESPONSE DISPATCH SYSTEM. If you are experiencing a life-threatening medical emergency or require immediate professional rescue assistance, please dial <strong>911 / 999 / 112</strong> or your local emergency response service immediately. Do not delay professional help due to information read on this website.
+              THIS PLATFORM IS NOT AN EMERGENCY RESPONSE DISPATCH SYSTEM. If you are experiencing a life-threatening medical emergency or require immediate professional rescue assistance, please dial <strong>999</strong> or your local emergency response service immediately. Do not delay professional help due to information read on this website.
             </p>
           </motion.section>
 
@@ -158,11 +156,6 @@ export default function TermsAndConditionsPage() {
         </motion.div>
       </div>
 
-      {/* Floating Chat Drawer */}
-      <ChatDrawer />
-
-      {/* Mobile Sticky Quick Access */}
-      <QuickAccessBar />
     </div>
   );
 }

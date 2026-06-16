@@ -67,7 +67,7 @@ export default function Footer() {
               </li>
               <li className="text-[10px] text-severe-red flex items-center gap-1.5 font-bold uppercase tracking-wider">
                 <span className="w-1.5 h-1.5 rounded-full bg-severe-red animate-pulse" />
-                Emergency Line: 911 / 112 / 999
+                Emergency Line: 999
               </li>
             </ul>
           </div>
@@ -88,6 +88,17 @@ export default function Footer() {
           <div className="text-[10px] font-mono text-text-muted text-center md:text-right shrink-0">
             <p className="uppercase tracking-wider">
               &copy; {new Date().getFullYear()} First Aid Guide. All Rights Reserved.
+            </p>
+            <p className="text-[9px] text-text-muted/60 mt-1">
+              This website is built by{" "}
+              <a
+                href="https://junvoon.vercel.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-accent-teal hover:underline"
+              >
+                JVCHEN
+              </a>
             </p>
             <p className="text-[9px] text-text-muted/60 mt-1">
               Clinical protocols adhere to international rescue standards.

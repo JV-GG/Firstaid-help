@@ -5,8 +5,6 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { firstAidCategories } from "@/lib/firstaid-data";
 import CategoryCard from "@/components/CategoryCard";
-import ChatDrawer from "@/components/ChatDrawer";
-import QuickAccessBar from "@/components/QuickAccessBar";
 
 export default function Home() {
   return (
@@ -133,11 +131,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Interactive Chat Overlay */}
-      <ChatDrawer />
-
-      {/* Mobile Sticky Quick Access Bar */}
-      <QuickAccessBar />
     </div>
   );
 }

@@ -125,4 +125,4 @@ npm run lint
 ## ⚕️ Medical Disclaimer
 
 > [!WARNING]
-> This application is for educational and informational purposes only. It is not intended to be a substitute for professional medical advice, diagnosis, treatment, or clinical judgement. Always seek the advice of a qualified healthcare provider with any questions you may have regarding a medical condition. **If you are experiencing a life-threatening medical emergency, call your local emergency services (e.g., 911 / 999) immediately.**
+> This application is for educational and informational purposes only. It is not intended to be a substitute for professional medical advice, diagnosis, treatment, or clinical judgement. Always seek the advice of a qualified healthcare provider with any questions you may have regarding a medical condition. **If you are experiencing a life-threatening medical emergency, call your local emergency services (e.g., 999) immediately.**

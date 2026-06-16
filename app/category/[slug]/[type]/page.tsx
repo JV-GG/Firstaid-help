@@ -10,8 +10,6 @@ import SeverityBadge from "@/components/SeverityBadge";
 import DoNotBox from "@/components/DoNotBox";
 import EmergencyBanner from "@/components/EmergencyBanner";
 import StepCard from "@/components/StepCard";
-import ChatDrawer from "@/components/ChatDrawer";
-import QuickAccessBar from "@/components/QuickAccessBar";
 
 interface PageProps {
   params: Promise<{ slug: string; type: string }> | { slug: string; type: string };
@@ -215,11 +213,6 @@ export default function TypeDetailPage({ params }: PageProps) {
         <EmergencyBanner />
       </div>
 
-      {/* Floating Chat Drawer */}
-      <ChatDrawer />
-
-      {/* Mobile Sticky Quick Access */}
-      <QuickAccessBar />
     </div>
   );
 }

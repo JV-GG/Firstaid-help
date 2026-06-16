@@ -9,8 +9,6 @@ import { CategoryIcon } from "@/components/CategoryCard";
 import FormulaDisplay from "@/components/FormulaDisplay";
 import SeverityBadge from "@/components/SeverityBadge";
 import BreadcrumbNav from "@/components/BreadcrumbNav";
-import ChatDrawer from "@/components/ChatDrawer";
-import QuickAccessBar from "@/components/QuickAccessBar";
 
 interface PageProps {
   params: Promise<{ slug: string }> | { slug: string };
@@ -191,11 +189,6 @@ export default function CategoryPage({ params }: PageProps) {
         </div>
       </div>
 
-      {/* Floating Chat Drawer */}
-      <ChatDrawer />
-
-      {/* Mobile Sticky Quick Access */}
-      <QuickAccessBar />
     </div>
   );
 }

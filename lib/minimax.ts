@@ -1,3 +1,5 @@
+import { firstAidCategories } from "./firstaid-data";
+
 export interface ChatMessage {
   role: "system" | "user" | "assistant";
   content: string;
@@ -7,6 +9,10 @@ export async function getMiniMaxResponse(messages: ChatMessage[]): Promise<strin
   const apiKey = process.env.MINIMAX_API_KEY || process.env.NEXT_PUBLIC_MINIMAX_API_KEY || "";
 
   try {
+    if (!apiKey) {
+      throw new Error("MiniMax API key is not configured.");
+    }
+
     const systemPrompt: ChatMessage = {
       role: "system",
       content: "You are a certified first aid assistant. Give clear, calm, step-by-step emergency guidance. Always remind users to call emergency services for serious situations. Keep responses concise but complete. Format your response clearly using markdown bullet points or steps."
@@ -52,7 +58,131 @@ export async function getMiniMaxResponse(messages: ChatMessage[]): Promise<strin
 
     return content;
   } catch (error) {
-    console.error("Error calling MiniMax API:", error);
-    throw error;
+    console.warn("Error calling MiniMax API (falling back to local offline responder):", error);
+    return getLocalFallbackResponse(messages);
   }
+}
+
+function getLocalFallbackResponse(messages: ChatMessage[]): string {
+  const userMessage = messages.filter(m => m.role === "user").pop()?.content || "";
+  const query = userMessage.toLowerCase().trim();
+
+  // Try to match category or specific injury type
+  let matchedType: any = null;
+  let matchedCategory: any = null;
+
+  for (const cat of firstAidCategories) {
+    // Check if category name matches
+    if (query.includes(cat.name.toLowerCase()) || query.includes(cat.slug.toLowerCase())) {
+      matchedCategory = cat;
+    }
+    for (const t of cat.types) {
+      if (query.includes(t.name.toLowerCase()) || (t.bodyPart && query.includes(t.bodyPart.toLowerCase()))) {
+        matchedType = t;
+        matchedCategory = cat;
+        break;
+      }
+    }
+    if (matchedType) break;
+  }
+
+  // Common synonyms or acronyms
+  if (!matchedType) {
+    if (query.includes("cpr") || query.includes("cardiac") || query.includes("heart")) {
+      // Find CPR
+      const heartCat = firstAidCategories.find(c => c.id === "heart-cardiac");
+      matchedType = heartCat?.types.find(t => t.id === "cardiac-arrest");
+      matchedCategory = heartCat;
+    } else if (query.includes("rice")) {
+      // Find ankle sprain as default sprain example
+      const sprainCat = firstAidCategories.find(c => c.id === "sprains-strains");
+      matchedType = sprainCat?.types.find(t => t.id === "ankle-sprain");
+      matchedCategory = sprainCat;
+    } else if (query.includes("choking") || query.includes("heimlich")) {
+      const chokeCat = firstAidCategories.find(c => c.id === "choking");
+      matchedType = chokeCat?.types[0]; // adult choking
+      matchedCategory = chokeCat;
+    } else if (query.includes("stroke") || query.includes("fast")) {
+      const headCat = firstAidCategories.find(c => c.id === "head-brain");
+      matchedType = headCat?.types.find(t => t.id === "stroke");
+      matchedCategory = headCat;
+    } else if (query.includes("seizure") || query.includes("fit")) {
+      const headCat = firstAidCategories.find(c => c.id === "head-brain");
+      matchedType = headCat?.types.find(t => t.id === "seizure");
+      matchedCategory = headCat;
+    } else if (query.includes("burn")) {
+      const burnCat = firstAidCategories.find(c => c.id === "burns");
+      matchedType = burnCat?.types[0];
+      matchedCategory = burnCat;
+    } else if (query.includes("bleed") || query.includes("wound") || query.includes("cut")) {
+      const bleedCat = firstAidCategories.find(c => c.id === "bleeding-wounds");
+      matchedType = bleedCat?.types[0];
+      matchedCategory = bleedCat;
+    }
+  }
+
+  const prefix = "*(Offline / Local Co-Pilot Mode)*\n\n";
+
+  if (matchedType) {
+    let response = `${prefix}Here is the verified medical protocol for **${matchedType.name}**:\n\n`;
+    response += `**Overview**: ${matchedType.overview}\n\n`;
+    
+    if (matchedType.formula) {
+      response += `**Directives (${matchedType.formula.acronym})**:\n`;
+      matchedType.formula.steps.forEach((s: string) => {
+        response += `- ${s}\n`;
+      });
+      response += `\n`;
+    }
+
+    response += `### 📋 Step-by-Step Action Plan:\n`;
+    matchedType.steps.forEach((step: any) => {
+      response += `${step.stepNumber}. **${step.title}** - ${step.description}\n`;
+      if (step.warning) {
+        response += `   *⚠️ Warning: ${step.warning}*\n`;
+      }
+    });
+    response += `\n`;
+
+    if (matchedType.doNots && matchedType.doNots.length > 0) {
+      response += `### ❌ DO NOTS (Contraindications):\n`;
+      matchedType.doNots.forEach((dn: string) => {
+        response += `- ${dn}\n`;
+      });
+      response += `\n`;
+    }
+
+    if (matchedType.whenToSeekHelp && matchedType.whenToSeekHelp.length > 0) {
+      response += `### 🚨 When to Seek Emergency Help:\n`;
+      matchedType.whenToSeekHelp.forEach((w: string) => {
+        response += `- ${w}\n`;
+      });
+      response += `\n`;
+    }
+
+    if (matchedType.estimatedRecovery) {
+      response += `*Estimated Recovery Time: ${matchedType.estimatedRecovery}*\n\n`;
+    }
+
+    response += `*Disclaimer: In case of life-threatening emergencies, always call 999 immediately.*`;
+    return response;
+  }
+
+  if (matchedCategory) {
+    let response = `${prefix}I found the category **${matchedCategory.name}** in the local database.\n\n`;
+    response += `${matchedCategory.description}\n\n`;
+    response += `**Immediate Directives (${matchedCategory.formula})**:\n`;
+    matchedCategory.formulaExpanded.forEach((fe: string) => {
+      response += `- ${fe}\n`;
+    });
+    response += `\nHere are some specific protocols in this category you can ask about:\n`;
+    matchedCategory.types.forEach((t: any) => {
+      response += `- **${t.name}** (Severity: ${t.severity.toUpperCase()})\n`;
+    });
+    response += `\n*Disclaimer: In case of life-threatening emergencies, always call 999 immediately.*`;
+    return response;
+  }
+
+  // Default general response
+  return `${prefix}I am currently operating in **Local Offline Mode** due to an API connectivity issue.\n\nHere are the critical first aid protocols for any situation:\n\n1. **Ensure Safety**: Assess the scene first. Never place yourself or the patient in further danger.\n2. **Check Responsiveness**: Tap the shoulders and ask loudly: *"Are you okay?"*\n3. **Call 999**: If the patient is unresponsive, struggling to breathe, or has severe bleeding/pain, call emergency services immediately.\n4. **Maintain Airway**: Ensure their airway is clear. If they are breathing but unconscious, place them in the **Recovery Position** (on their side).\n5. **Stop Bleeding**: Apply firm, direct pressure with a clean cloth/bandage to any active wounds.\n6. **Do No Harm**: Avoid moving a patient who may have head, neck, or back trauma unless absolutely necessary.\n\n*Please ask about a specific injury (e.g. CPR steps, ankle sprain, burns, stroke, choking) to get detailed protocols.*`;
 }

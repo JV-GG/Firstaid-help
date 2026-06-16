@@ -130,7 +130,7 @@ export default function ChatDrawer() {
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
       }]);
     } catch (err: any) {
-      console.error(err);
+      console.warn("Chat drawer warning:", err);
       triggerToast("Failed to connect to the medical assistant. Try again.");
     } finally {
       setIsLoading(false);
