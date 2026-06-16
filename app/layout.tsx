@@ -39,7 +39,7 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} h-full antialiased dark`}
     >
-      <body className="min-h-full flex flex-col bg-base text-text-primary selection:bg-accent-teal selection:text-base">
+      <body className="min-h-full flex flex-col bg-base-dark text-text-primary selection:bg-accent-teal selection:text-base-dark">
         {/* Sitewide subtle noise overlay */}
         <div className="noise-overlay" />
         

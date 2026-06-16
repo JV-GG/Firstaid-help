@@ -54,7 +54,7 @@ export default function FormulaDisplay({ formula, expanded }: FormulaDisplayProp
             variants={itemVariants}
             className="flex items-center gap-3 p-4 rounded-xl bg-white/[0.03] border border-white/[0.06] backdrop-blur-md hover:border-accent-teal/30 transition-all duration-300 group"
           >
-            <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-accent-teal-dim text-accent-teal font-mono text-2xl font-bold border border-accent-teal/20 group-hover:scale-105 group-hover:bg-accent-teal group-hover:text-base transition-all duration-300">
+            <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-accent-teal-dim text-accent-teal font-mono text-2xl font-bold border border-accent-teal/20 group-hover:scale-105 group-hover:bg-accent-teal group-hover:text-base-dark transition-all duration-300">
               {letter}
             </div>
             <div>

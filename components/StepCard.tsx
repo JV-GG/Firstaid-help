@@ -41,7 +41,7 @@ export default function StepCard({ step, categorySlug, typeId }: StepCardProps) 
       <div className="flex-1 flex flex-col justify-between">
         <div>
           <div className="flex items-center gap-3.5 mb-3.5">
-            <div className="flex items-center justify-center w-10 h-10 rounded-full bg-accent-teal text-base font-bold font-mono text-base shadow-[0_0_15px_rgba(0,229,196,0.3)] shrink-0 group-hover:scale-105 transition-transform duration-300">
+            <div className="flex items-center justify-center w-10 h-10 rounded-full bg-accent-teal text-base font-bold font-mono text-base-dark shadow-[0_0_15px_rgba(0,229,196,0.3)] shrink-0 group-hover:scale-105 transition-transform duration-300">
               {step.stepNumber}
             </div>
             <h3 className="text-base md:text-lg font-bold font-display text-text-primary uppercase tracking-wide group-hover:text-accent-teal transition-colors duration-300">
@@ -65,7 +65,7 @@ export default function StepCard({ step, categorySlug, typeId }: StepCardProps) 
       </div>
 
       {/* Stylized Neon Medical SVG Illustration OR Actual Photo */}
-      <div className="w-full md:w-56 h-40 rounded-xl bg-base/50 border border-white/[0.04] relative overflow-hidden flex items-center justify-center shrink-0">
+      <div className="w-full md:w-56 h-40 rounded-xl bg-base-dark/50 border border-white/[0.04] relative overflow-hidden flex items-center justify-center shrink-0">
         {!imgError && categorySlug && typeId ? (
           <>
             <Image
@@ -76,7 +76,7 @@ export default function StepCard({ step, categorySlug, typeId }: StepCardProps) 
               sizes="(max-width: 768px) 100vw, 224px"
               onError={() => setImgError(true)}
             />
-            <div className="absolute bottom-1.5 left-1.5 right-1.5 bg-base/80 backdrop-blur-[2px] px-1.5 py-0.5 rounded text-[8px] tracking-tight border border-white/5 uppercase text-center text-text-muted select-none pointer-events-none z-10 font-mono">
+            <div className="absolute bottom-1.5 left-1.5 right-1.5 bg-base-dark/80 backdrop-blur-[2px] px-1.5 py-0.5 rounded text-[8px] tracking-tight border border-white/5 uppercase text-center text-text-muted select-none pointer-events-none z-10 font-mono">
               For illustration purposes only
             </div>
           </>

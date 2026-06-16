@@ -8,15 +8,15 @@ import CategoryCard from "@/components/CategoryCard";
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col justify-between relative bg-base overflow-x-hidden pb-24 md:pb-6">
+    <div className="min-h-screen flex flex-col justify-between relative bg-base-dark overflow-x-hidden pb-24 md:pb-6">
       
       {/* Hero Section */}
-      <section className="relative w-full h-[70vh] md:h-[60vh] flex flex-col items-center justify-center text-center px-6 border-b border-white/[0.04] bg-base overflow-hidden">
+      <section className="relative w-full h-[70vh] md:h-[60vh] flex flex-col items-center justify-center text-center px-6 border-b border-white/[0.04] bg-base-dark overflow-hidden">
         
 
         
         {/* Gradient Overlay for Text Readability */}
-        <div className="absolute inset-0 w-full h-full bg-gradient-to-t from-base via-base/80 to-transparent pointer-events-none"></div>
+        <div className="absolute inset-0 w-full h-full bg-gradient-to-t from-base-dark via-base-dark/80 to-transparent pointer-events-none"></div>
         
         {/* ECG Heartbeat Line Background */}
         <div className="absolute inset-0 w-full h-full flex items-center justify-center opacity-20 pointer-events-none overflow-hidden">

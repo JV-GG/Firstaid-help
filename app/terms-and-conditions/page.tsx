@@ -27,7 +27,7 @@ export default function TermsAndConditionsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-base flex flex-col justify-between pb-24 md:pb-8 relative">
+    <div className="min-h-screen bg-base-dark flex flex-col justify-between pb-24 md:pb-8 relative">
       
       {/* Main Content Area */}
       <div className="max-w-4xl mx-auto w-full px-6 py-6 md:py-10">

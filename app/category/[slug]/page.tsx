@@ -23,7 +23,7 @@ export default function CategoryPage({ params }: PageProps) {
 
   if (!category) {
     return (
-      <div className="min-h-screen bg-base text-text-primary flex flex-col items-center justify-center p-6 text-center">
+      <div className="min-h-screen bg-base-dark text-text-primary flex flex-col items-center justify-center p-6 text-center">
         <h1 className="text-2xl font-bold font-display text-severe-red mb-3">CATEGORY PROTOCOL NOT SEEDED</h1>
         <p className="text-text-muted mb-6">The requested emergency category cannot be found in our database.</p>
         <Link href="/" className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 border border-white/10 hover:bg-accent-teal/10 hover:text-accent-teal hover:border-accent-teal/30 transition-all font-mono text-xs">
@@ -62,7 +62,7 @@ export default function CategoryPage({ params }: PageProps) {
   };
 
   return (
-    <div className="min-h-screen bg-base flex flex-col justify-between pb-24 md:pb-8 relative">
+    <div className="min-h-screen bg-base-dark flex flex-col justify-between pb-24 md:pb-8 relative">
       
       {/* Upper Area */}
       <div className="max-w-7xl mx-auto w-full px-6 py-6 md:py-10">

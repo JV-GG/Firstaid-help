@@ -2,7 +2,7 @@ import React from "react";
 
 export default function TypeDetailLoading() {
   return (
-    <div className="min-h-screen bg-base relative pb-28 animate-pulse">
+    <div className="min-h-screen bg-base-dark relative pb-28 animate-pulse">
       
       {/* Header Skeleton */}
       <div className="w-full bg-surface border-b border-white/5 px-6 py-4">

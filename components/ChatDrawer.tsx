@@ -188,7 +188,7 @@ export default function ChatDrawer() {
           aria-haspopup="dialog"
           aria-expanded={isOpen}
           aria-label="Open AI First Aid Chatbot"
-          className="flex items-center justify-center w-14 h-14 rounded-full bg-accent-teal text-base font-bold shadow-[0_0_20px_rgba(0,229,196,0.4)] border border-accent-teal/30 hover:scale-105 active:scale-95 transition-all duration-300 animate-heart-pulse cursor-pointer group"
+          className="flex items-center justify-center w-14 h-14 rounded-full bg-accent-teal text-base-dark font-bold shadow-[0_0_20px_rgba(0,229,196,0.4)] border border-accent-teal/30 hover:scale-105 active:scale-95 transition-all duration-300 animate-heart-pulse cursor-pointer group"
         >
           <MessageSquare className="w-6 h-6 group-hover:rotate-6 transition-transform" />
         </button>
@@ -204,7 +204,7 @@ export default function ChatDrawer() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsOpen(false)}
-              className="absolute inset-0 bg-base/60 backdrop-blur-sm pointer-events-auto"
+              className="absolute inset-0 bg-base-dark/60 backdrop-blur-sm pointer-events-auto"
             />
 
             {/* Chat Drawer Container */}
@@ -398,7 +398,7 @@ export default function ChatDrawer() {
                   <button
                     type="submit"
                     disabled={!input.trim() || isLoading}
-                    className="p-1.5 rounded-lg bg-accent-teal-dim text-accent-teal hover:bg-accent-teal hover:text-base transition-all disabled:opacity-30 disabled:pointer-events-none cursor-pointer"
+                    className="p-1.5 rounded-lg bg-accent-teal-dim text-accent-teal hover:bg-accent-teal hover:text-base-dark transition-all disabled:opacity-30 disabled:pointer-events-none cursor-pointer"
                     aria-label="Send Message"
                   >
                     <Send className="w-4 h-4" />

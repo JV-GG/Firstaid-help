@@ -2,7 +2,7 @@ import React from "react";
 
 export default function CategoryLoading() {
   return (
-    <div className="min-h-screen bg-base max-w-7xl mx-auto w-full px-6 py-10 relative animate-pulse">
+    <div className="min-h-screen bg-base-dark max-w-7xl mx-auto w-full px-6 py-10 relative animate-pulse">
       
       {/* Breadcrumb Skeleton */}
       <div className="h-4 w-48 bg-white/5 rounded mb-8" />
