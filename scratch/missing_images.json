@@ -1,0 +1,863 @@
+[
+  {
+    "categorySlug": "bleeding-wounds",
+    "typeId": "severe-bleeding",
+    "stepNumber": 3,
+    "imagePrompt": "Fingers stuffing gauze into deep wound cavity",
+    "fileName": "bleeding-wounds_severe-bleeding_step3.png"
+  },
+  {
+    "categorySlug": "bleeding-wounds",
+    "typeId": "severe-bleeding",
+    "stepNumber": 4,
+    "imagePrompt": "Lying patient with elevated legs wrapped in blanket",
+    "fileName": "bleeding-wounds_severe-bleeding_step4.png"
+  },
+  {
+    "categorySlug": "bleeding-wounds",
+    "typeId": "severe-bleeding",
+    "stepNumber": 5,
+    "imagePrompt": "Paramedics arriving holding stretcher",
+    "fileName": "bleeding-wounds_severe-bleeding_step5.png"
+  },
+  {
+    "categorySlug": "choking",
+    "typeId": "adult-choking",
+    "stepNumber": 1,
+    "imagePrompt": "Choking person holding throat with hands (universal sign)",
+    "fileName": "choking_adult-choking_step1.png"
+  },
+  {
+    "categorySlug": "choking",
+    "typeId": "adult-choking",
+    "stepNumber": 2,
+    "imagePrompt": "Striking patient's back between shoulder blades",
+    "fileName": "choking_adult-choking_step2.png"
+  },
+  {
+    "categorySlug": "choking",
+    "typeId": "adult-choking",
+    "stepNumber": 3,
+    "imagePrompt": "Abdominal thrust position just above belly button",
+    "fileName": "choking_adult-choking_step3.png"
+  },
+  {
+    "categorySlug": "choking",
+    "typeId": "adult-choking",
+    "stepNumber": 4,
+    "imagePrompt": "Repeating cycle graphics",
+    "fileName": "choking_adult-choking_step4.png"
+  },
+  {
+    "categorySlug": "choking",
+    "typeId": "adult-choking",
+    "stepNumber": 5,
+    "imagePrompt": "CPR compressions on flat surface",
+    "fileName": "choking_adult-choking_step5.png"
+  },
+  {
+    "categorySlug": "choking",
+    "typeId": "child-choking",
+    "stepNumber": 1,
+    "imagePrompt": "Child gasping holding neck",
+    "fileName": "choking_child-choking_step1.png"
+  },
+  {
+    "categorySlug": "choking",
+    "typeId": "child-choking",
+    "stepNumber": 2,
+    "imagePrompt": "Kneeling behind child giving back blows",
+    "fileName": "choking_child-choking_step2.png"
+  },
+  {
+    "categorySlug": "choking",
+    "typeId": "child-choking",
+    "stepNumber": 3,
+    "imagePrompt": "Delivering upward thrusts to child's abdomen",
+    "fileName": "choking_child-choking_step3.png"
+  },
+  {
+    "categorySlug": "choking",
+    "typeId": "child-choking",
+    "stepNumber": 4,
+    "imagePrompt": "Loop cycle graphic child",
+    "fileName": "choking_child-choking_step4.png"
+  },
+  {
+    "categorySlug": "choking",
+    "typeId": "child-choking",
+    "stepNumber": 5,
+    "imagePrompt": "Child CPR technique diagram",
+    "fileName": "choking_child-choking_step5.png"
+  },
+  {
+    "categorySlug": "choking",
+    "typeId": "infant-choking",
+    "stepNumber": 1,
+    "imagePrompt": "Infant face showing bluish tint",
+    "fileName": "choking_infant-choking_step1.png"
+  },
+  {
+    "categorySlug": "choking",
+    "typeId": "infant-choking",
+    "stepNumber": 2,
+    "imagePrompt": "Infant resting face down on forearm, head lower than chest",
+    "fileName": "choking_infant-choking_step2.png"
+  },
+  {
+    "categorySlug": "choking",
+    "typeId": "infant-choking",
+    "stepNumber": 3,
+    "imagePrompt": "Hitting baby's back with hand heel while on arm",
+    "fileName": "choking_infant-choking_step3.png"
+  },
+  {
+    "categorySlug": "choking",
+    "typeId": "infant-choking",
+    "stepNumber": 4,
+    "imagePrompt": "Two fingers compressing infant breastbone",
+    "fileName": "choking_infant-choking_step4.png"
+  },
+  {
+    "categorySlug": "choking",
+    "typeId": "infant-choking",
+    "stepNumber": 5,
+    "imagePrompt": "Timer showing 1 minute",
+    "fileName": "choking_infant-choking_step5.png"
+  },
+  {
+    "categorySlug": "choking",
+    "typeId": "pregnant-obese",
+    "stepNumber": 1,
+    "imagePrompt": "Pregnant woman choking holding neck",
+    "fileName": "choking_pregnant-obese_step1.png"
+  },
+  {
+    "categorySlug": "choking",
+    "typeId": "pregnant-obese",
+    "stepNumber": 2,
+    "imagePrompt": "Striking back of pregnant woman leaning forward",
+    "fileName": "choking_pregnant-obese_step2.png"
+  },
+  {
+    "categorySlug": "choking",
+    "typeId": "pregnant-obese",
+    "stepNumber": 3,
+    "imagePrompt": "Wrap arms under armpits, fist on breastbone",
+    "fileName": "choking_pregnant-obese_step3.png"
+  },
+  {
+    "categorySlug": "choking",
+    "typeId": "pregnant-obese",
+    "stepNumber": 4,
+    "imagePrompt": "Compressing breastbone backward sharply",
+    "fileName": "choking_pregnant-obese_step4.png"
+  },
+  {
+    "categorySlug": "choking",
+    "typeId": "pregnant-obese",
+    "stepNumber": 5,
+    "imagePrompt": "Dialing 999",
+    "fileName": "choking_pregnant-obese_step5.png"
+  },
+  {
+    "categorySlug": "heart-cardiac",
+    "typeId": "heart-attack",
+    "stepNumber": 1,
+    "imagePrompt": "Calling 999 on mobile screen",
+    "fileName": "heart-cardiac_heart-attack_step1.png"
+  },
+  {
+    "categorySlug": "heart-cardiac",
+    "typeId": "heart-attack",
+    "stepNumber": 2,
+    "imagePrompt": "Patient sitting leaning back on wall with knees bent (W-position)",
+    "fileName": "heart-cardiac_heart-attack_step2.png"
+  },
+  {
+    "categorySlug": "heart-cardiac",
+    "typeId": "heart-attack",
+    "stepNumber": 3,
+    "imagePrompt": "Patient chewing aspirin pill",
+    "fileName": "heart-cardiac_heart-attack_step3.png"
+  },
+  {
+    "categorySlug": "heart-cardiac",
+    "typeId": "heart-attack",
+    "stepNumber": 4,
+    "imagePrompt": "Loosening neck collar buttons",
+    "fileName": "heart-cardiac_heart-attack_step4.png"
+  },
+  {
+    "categorySlug": "heart-cardiac",
+    "typeId": "heart-attack",
+    "stepNumber": 5,
+    "imagePrompt": "Checking pulse and breathing rate",
+    "fileName": "heart-cardiac_heart-attack_step5.png"
+  },
+  {
+    "categorySlug": "heart-cardiac",
+    "typeId": "cardiac-arrest",
+    "stepNumber": 1,
+    "imagePrompt": "Shaking shoulders of unconscious patient",
+    "fileName": "heart-cardiac_cardiac-arrest_step1.png"
+  },
+  {
+    "categorySlug": "heart-cardiac",
+    "typeId": "cardiac-arrest",
+    "stepNumber": 2,
+    "imagePrompt": "Interlocking hands on chest center",
+    "fileName": "heart-cardiac_cardiac-arrest_step2.png"
+  },
+  {
+    "categorySlug": "heart-cardiac",
+    "typeId": "cardiac-arrest",
+    "stepNumber": 3,
+    "imagePrompt": "Head-tilt chin-lift maneuver demonstration",
+    "fileName": "heart-cardiac_cardiac-arrest_step3.png"
+  },
+  {
+    "categorySlug": "heart-cardiac",
+    "typeId": "cardiac-arrest",
+    "stepNumber": 4,
+    "imagePrompt": "Rescue breathing mouth-to-mouth",
+    "fileName": "heart-cardiac_cardiac-arrest_step4.png"
+  },
+  {
+    "categorySlug": "heart-cardiac",
+    "typeId": "cardiac-arrest",
+    "stepNumber": 5,
+    "imagePrompt": "Repeating 30 compressions and 2 breaths graphic",
+    "fileName": "heart-cardiac_cardiac-arrest_step5.png"
+  },
+  {
+    "categorySlug": "heart-cardiac",
+    "typeId": "aed-use",
+    "stepNumber": 1,
+    "imagePrompt": "Opening and turning on AED machine",
+    "fileName": "heart-cardiac_aed-use_step1.png"
+  },
+  {
+    "categorySlug": "heart-cardiac",
+    "typeId": "aed-use",
+    "stepNumber": 2,
+    "imagePrompt": "AED pads placement diagrams on chest",
+    "fileName": "heart-cardiac_aed-use_step2.png"
+  },
+  {
+    "categorySlug": "heart-cardiac",
+    "typeId": "aed-use",
+    "stepNumber": 3,
+    "imagePrompt": "Plugging cable into AED socket",
+    "fileName": "heart-cardiac_aed-use_step3.png"
+  },
+  {
+    "categorySlug": "heart-cardiac",
+    "typeId": "aed-use",
+    "stepNumber": 4,
+    "imagePrompt": "Hands back 'Everyone Clear' gesture",
+    "fileName": "heart-cardiac_aed-use_step4.png"
+  },
+  {
+    "categorySlug": "heart-cardiac",
+    "typeId": "aed-use",
+    "stepNumber": 5,
+    "imagePrompt": "Pressing flashing red shock button on AED",
+    "fileName": "heart-cardiac_aed-use_step5.png"
+  },
+  {
+    "categorySlug": "heart-cardiac",
+    "typeId": "defibrillation",
+    "stepNumber": 1,
+    "imagePrompt": "Assessing patient on ground",
+    "fileName": "heart-cardiac_defibrillation_step1.png"
+  },
+  {
+    "categorySlug": "heart-cardiac",
+    "typeId": "defibrillation",
+    "stepNumber": 2,
+    "imagePrompt": "Attaching pads to skin",
+    "fileName": "heart-cardiac_defibrillation_step2.png"
+  },
+  {
+    "categorySlug": "heart-cardiac",
+    "typeId": "defibrillation",
+    "stepNumber": 3,
+    "imagePrompt": "ECG wave display on monitor",
+    "fileName": "heart-cardiac_defibrillation_step3.png"
+  },
+  {
+    "categorySlug": "heart-cardiac",
+    "typeId": "defibrillation",
+    "stepNumber": 4,
+    "imagePrompt": "Starting compressions immediately after shock",
+    "fileName": "heart-cardiac_defibrillation_step4.png"
+  },
+  {
+    "categorySlug": "heart-cardiac",
+    "typeId": "defibrillation",
+    "stepNumber": 5,
+    "imagePrompt": "Emergency responders taking over",
+    "fileName": "heart-cardiac_defibrillation_step5.png"
+  },
+  {
+    "categorySlug": "poisoning",
+    "typeId": "ingested",
+    "stepNumber": 1,
+    "imagePrompt": "Spitting into sink",
+    "fileName": "poisoning_ingested_step1.png"
+  },
+  {
+    "categorySlug": "poisoning",
+    "typeId": "ingested",
+    "stepNumber": 2,
+    "imagePrompt": "Holding chemical cleaner bottle with label visible",
+    "fileName": "poisoning_ingested_step2.png"
+  },
+  {
+    "categorySlug": "poisoning",
+    "typeId": "ingested",
+    "stepNumber": 3,
+    "imagePrompt": "Making emergency phone call",
+    "fileName": "poisoning_ingested_step3.png"
+  },
+  {
+    "categorySlug": "poisoning",
+    "typeId": "ingested",
+    "stepNumber": 4,
+    "imagePrompt": "Patient drinking small sip of water",
+    "fileName": "poisoning_ingested_step4.png"
+  },
+  {
+    "categorySlug": "poisoning",
+    "typeId": "ingested",
+    "stepNumber": 5,
+    "imagePrompt": "Patient in recovery position on floor",
+    "fileName": "poisoning_ingested_step5.png"
+  },
+  {
+    "categorySlug": "poisoning",
+    "typeId": "inhaled",
+    "stepNumber": 1,
+    "imagePrompt": "Escaping smoke-filled room to outdoors",
+    "fileName": "poisoning_inhaled_step1.png"
+  },
+  {
+    "categorySlug": "poisoning",
+    "typeId": "inhaled",
+    "stepNumber": 2,
+    "imagePrompt": "Cell phone showing dial screen",
+    "fileName": "poisoning_inhaled_step2.png"
+  },
+  {
+    "categorySlug": "poisoning",
+    "typeId": "inhaled",
+    "stepNumber": 3,
+    "imagePrompt": "Loosening patient's jacket zipper",
+    "fileName": "poisoning_inhaled_step3.png"
+  },
+  {
+    "categorySlug": "poisoning",
+    "typeId": "inhaled",
+    "stepNumber": 4,
+    "imagePrompt": "Performing chest compressions on floor",
+    "fileName": "poisoning_inhaled_step4.png"
+  },
+  {
+    "categorySlug": "poisoning",
+    "typeId": "inhaled",
+    "stepNumber": 5,
+    "imagePrompt": "Sitting patient wrapped in space blanket",
+    "fileName": "poisoning_inhaled_step5.png"
+  },
+  {
+    "categorySlug": "poisoning",
+    "typeId": "skin-contact",
+    "stepNumber": 1,
+    "imagePrompt": "Washing arm under faucet with plenty of soap lather",
+    "fileName": "poisoning_skin-contact_step1.png"
+  },
+  {
+    "categorySlug": "poisoning",
+    "typeId": "skin-contact",
+    "stepNumber": 2,
+    "imagePrompt": "Throwing shirt into plastic bag",
+    "fileName": "poisoning_skin-contact_step2.png"
+  },
+  {
+    "categorySlug": "poisoning",
+    "typeId": "skin-contact",
+    "stepNumber": 3,
+    "imagePrompt": "Hands in yellow cleaning gloves",
+    "fileName": "poisoning_skin-contact_step3.png"
+  },
+  {
+    "categorySlug": "poisoning",
+    "typeId": "skin-contact",
+    "stepNumber": 4,
+    "imagePrompt": "Patting arm with towel",
+    "fileName": "poisoning_skin-contact_step4.png"
+  },
+  {
+    "categorySlug": "poisoning",
+    "typeId": "skin-contact",
+    "stepNumber": 5,
+    "imagePrompt": "Poison control contact card",
+    "fileName": "poisoning_skin-contact_step5.png"
+  },
+  {
+    "categorySlug": "poisoning",
+    "typeId": "eye-contamination",
+    "stepNumber": 1,
+    "imagePrompt": "Pouring water from cup into corner of open eye",
+    "fileName": "poisoning_eye-contamination_step1.png"
+  },
+  {
+    "categorySlug": "poisoning",
+    "typeId": "eye-contamination",
+    "stepNumber": 2,
+    "imagePrompt": "Removing contact lens from eye",
+    "fileName": "poisoning_eye-contamination_step2.png"
+  },
+  {
+    "categorySlug": "poisoning",
+    "typeId": "eye-contamination",
+    "stepNumber": 3,
+    "imagePrompt": "Eye covered with clean white patch",
+    "fileName": "poisoning_eye-contamination_step3.png"
+  },
+  {
+    "categorySlug": "poisoning",
+    "typeId": "eye-contamination",
+    "stepNumber": 4,
+    "imagePrompt": "Hand held away from eye",
+    "fileName": "poisoning_eye-contamination_step4.png"
+  },
+  {
+    "categorySlug": "poisoning",
+    "typeId": "eye-contamination",
+    "stepNumber": 5,
+    "imagePrompt": "Ambulance dashboard interior view",
+    "fileName": "poisoning_eye-contamination_step5.png"
+  },
+  {
+    "categorySlug": "heat-cold",
+    "typeId": "heat-exhaustion",
+    "stepNumber": 1,
+    "imagePrompt": "Patient sitting in shade under tree",
+    "fileName": "heat-cold_heat-exhaustion_step1.png"
+  },
+  {
+    "categorySlug": "heat-cold",
+    "typeId": "heat-exhaustion",
+    "stepNumber": 2,
+    "imagePrompt": "Removing thick socks and unbuttoning shirt",
+    "fileName": "heat-cold_heat-exhaustion_step2.png"
+  },
+  {
+    "categorySlug": "heat-cold",
+    "typeId": "heat-exhaustion",
+    "stepNumber": 3,
+    "imagePrompt": "Placing wet towels on forehead and neck",
+    "fileName": "heat-cold_heat-exhaustion_step3.png"
+  },
+  {
+    "categorySlug": "heat-cold",
+    "typeId": "heat-exhaustion",
+    "stepNumber": 4,
+    "imagePrompt": "Sipping sports drink slowly",
+    "fileName": "heat-cold_heat-exhaustion_step4.png"
+  },
+  {
+    "categorySlug": "heat-cold",
+    "typeId": "heat-exhaustion",
+    "stepNumber": 5,
+    "imagePrompt": "Lying down legs propped up on backpack",
+    "fileName": "heat-cold_heat-exhaustion_step5.png"
+  },
+  {
+    "categorySlug": "heat-cold",
+    "typeId": "heatstroke",
+    "stepNumber": 1,
+    "imagePrompt": "Ambulance emergency response",
+    "fileName": "heat-cold_heatstroke_step1.png"
+  },
+  {
+    "categorySlug": "heat-cold",
+    "typeId": "heatstroke",
+    "stepNumber": 2,
+    "imagePrompt": "Stripping outer jacket from patient",
+    "fileName": "heat-cold_heatstroke_step2.png"
+  },
+  {
+    "categorySlug": "heat-cold",
+    "typeId": "heatstroke",
+    "stepNumber": 3,
+    "imagePrompt": "Immersing patient in ice-water bath",
+    "fileName": "heat-cold_heatstroke_step3.png"
+  },
+  {
+    "categorySlug": "heat-cold",
+    "typeId": "heatstroke",
+    "stepNumber": 4,
+    "imagePrompt": "Ice packs on neck, armpits, and groin",
+    "fileName": "heat-cold_heatstroke_step4.png"
+  },
+  {
+    "categorySlug": "heat-cold",
+    "typeId": "heatstroke",
+    "stepNumber": 5,
+    "imagePrompt": "Checking pulse and breathing rate",
+    "fileName": "heat-cold_heatstroke_step5.png"
+  },
+  {
+    "categorySlug": "heat-cold",
+    "typeId": "hypothermia",
+    "stepNumber": 1,
+    "imagePrompt": "Entering a warm wooden cabin",
+    "fileName": "heat-cold_hypothermia_step1.png"
+  },
+  {
+    "categorySlug": "heat-cold",
+    "typeId": "hypothermia",
+    "stepNumber": 2,
+    "imagePrompt": "Cutting off wet clothing with shears",
+    "fileName": "heat-cold_hypothermia_step2.png"
+  },
+  {
+    "categorySlug": "heat-cold",
+    "typeId": "hypothermia",
+    "stepNumber": 3,
+    "imagePrompt": "Patient wrapped in thick blankets, heating pad on chest",
+    "fileName": "heat-cold_hypothermia_step3.png"
+  },
+  {
+    "categorySlug": "heat-cold",
+    "typeId": "hypothermia",
+    "stepNumber": 4,
+    "imagePrompt": "Holding mug of warm tea",
+    "fileName": "heat-cold_hypothermia_step4.png"
+  },
+  {
+    "categorySlug": "heat-cold",
+    "typeId": "hypothermia",
+    "stepNumber": 5,
+    "imagePrompt": "Lying wrapped patient, helper checking chest movement",
+    "fileName": "heat-cold_hypothermia_step5.png"
+  },
+  {
+    "categorySlug": "heat-cold",
+    "typeId": "frostbite",
+    "stepNumber": 1,
+    "imagePrompt": "Sheltered indoor room",
+    "fileName": "heat-cold_frostbite_step1.png"
+  },
+  {
+    "categorySlug": "heat-cold",
+    "typeId": "frostbite",
+    "stepNumber": 2,
+    "imagePrompt": "Hands kept apart away from face",
+    "fileName": "heat-cold_frostbite_step2.png"
+  },
+  {
+    "categorySlug": "heat-cold",
+    "typeId": "frostbite",
+    "stepNumber": 3,
+    "imagePrompt": "Hands soaking in basin of warm water",
+    "fileName": "heat-cold_frostbite_step3.png"
+  },
+  {
+    "categorySlug": "heat-cold",
+    "typeId": "frostbite",
+    "stepNumber": 4,
+    "imagePrompt": "Gauze strips placed between fingers",
+    "fileName": "heat-cold_frostbite_step4.png"
+  },
+  {
+    "categorySlug": "heat-cold",
+    "typeId": "frostbite",
+    "stepNumber": 5,
+    "imagePrompt": "Hospital building graphic",
+    "fileName": "heat-cold_frostbite_step5.png"
+  },
+  {
+    "categorySlug": "allergic-reactions",
+    "typeId": "mild-allergic",
+    "stepNumber": 1,
+    "imagePrompt": "Moving away from flowering plant",
+    "fileName": "allergic-reactions_mild-allergic_step1.png"
+  },
+  {
+    "categorySlug": "allergic-reactions",
+    "typeId": "mild-allergic",
+    "stepNumber": 2,
+    "imagePrompt": "Taking small pink allergy tablet",
+    "fileName": "allergic-reactions_mild-allergic_step2.png"
+  },
+  {
+    "categorySlug": "allergic-reactions",
+    "typeId": "mild-allergic",
+    "stepNumber": 3,
+    "imagePrompt": "Cool washcloth on arm hives",
+    "fileName": "allergic-reactions_mild-allergic_step3.png"
+  },
+  {
+    "categorySlug": "allergic-reactions",
+    "typeId": "mild-allergic",
+    "stepNumber": 4,
+    "imagePrompt": "Applying cream to red arm patch",
+    "fileName": "allergic-reactions_mild-allergic_step4.png"
+  },
+  {
+    "categorySlug": "allergic-reactions",
+    "typeId": "mild-allergic",
+    "stepNumber": 5,
+    "imagePrompt": "Timer showing 30 minutes",
+    "fileName": "allergic-reactions_mild-allergic_step5.png"
+  },
+  {
+    "categorySlug": "allergic-reactions",
+    "typeId": "anaphylaxis",
+    "stepNumber": 1,
+    "imagePrompt": "EpiPen auto-injector being pressed into outer thigh through pants",
+    "fileName": "allergic-reactions_anaphylaxis_step1.png"
+  },
+  {
+    "categorySlug": "allergic-reactions",
+    "typeId": "anaphylaxis",
+    "stepNumber": 2,
+    "imagePrompt": "Red phone calling emergency services",
+    "fileName": "allergic-reactions_anaphylaxis_step2.png"
+  },
+  {
+    "categorySlug": "allergic-reactions",
+    "typeId": "anaphylaxis",
+    "stepNumber": 3,
+    "imagePrompt": "Lying patient with legs raised on box",
+    "fileName": "allergic-reactions_anaphylaxis_step3.png"
+  },
+  {
+    "categorySlug": "allergic-reactions",
+    "typeId": "anaphylaxis",
+    "stepNumber": 4,
+    "imagePrompt": "Checking timer and EpiPen box",
+    "fileName": "allergic-reactions_anaphylaxis_step4.png"
+  },
+  {
+    "categorySlug": "allergic-reactions",
+    "typeId": "anaphylaxis",
+    "stepNumber": 5,
+    "imagePrompt": "Delivering chest compressions",
+    "fileName": "allergic-reactions_anaphylaxis_step5.png"
+  },
+  {
+    "categorySlug": "allergic-reactions",
+    "typeId": "insect-sting",
+    "stepNumber": 1,
+    "imagePrompt": "Scraping skin with credit card to remove black stinger sting",
+    "fileName": "allergic-reactions_insect-sting_step1.png"
+  },
+  {
+    "categorySlug": "allergic-reactions",
+    "typeId": "insect-sting",
+    "stepNumber": 2,
+    "imagePrompt": "Washing arm sting under faucet",
+    "fileName": "allergic-reactions_insect-sting_step2.png"
+  },
+  {
+    "categorySlug": "allergic-reactions",
+    "typeId": "insect-sting",
+    "stepNumber": 3,
+    "imagePrompt": "Ice cube wrapped in tissue on sting spot",
+    "fileName": "allergic-reactions_insect-sting_step3.png"
+  },
+  {
+    "categorySlug": "allergic-reactions",
+    "typeId": "insect-sting",
+    "stepNumber": 4,
+    "imagePrompt": "Dabbing pink lotion on skin",
+    "fileName": "allergic-reactions_insect-sting_step4.png"
+  },
+  {
+    "categorySlug": "allergic-reactions",
+    "typeId": "insect-sting",
+    "stepNumber": 5,
+    "imagePrompt": "Watching breathing rate",
+    "fileName": "allergic-reactions_insect-sting_step5.png"
+  },
+  {
+    "categorySlug": "allergic-reactions",
+    "typeId": "food-allergy",
+    "stepNumber": 1,
+    "imagePrompt": "Spitting food into tissue",
+    "fileName": "allergic-reactions_food-allergy_step1.png"
+  },
+  {
+    "categorySlug": "allergic-reactions",
+    "typeId": "food-allergy",
+    "stepNumber": 2,
+    "imagePrompt": "Checking patient's throat with tongue depressor icon",
+    "fileName": "allergic-reactions_food-allergy_step2.png"
+  },
+  {
+    "categorySlug": "allergic-reactions",
+    "typeId": "food-allergy",
+    "stepNumber": 3,
+    "imagePrompt": "Pouring liquid antihistamine onto spoon",
+    "fileName": "allergic-reactions_food-allergy_step3.png"
+  },
+  {
+    "categorySlug": "allergic-reactions",
+    "typeId": "food-allergy",
+    "stepNumber": 4,
+    "imagePrompt": "Pressing auto-injector into thigh",
+    "fileName": "allergic-reactions_food-allergy_step4.png"
+  },
+  {
+    "categorySlug": "allergic-reactions",
+    "typeId": "food-allergy",
+    "stepNumber": 5,
+    "imagePrompt": "Emergency sign",
+    "fileName": "allergic-reactions_food-allergy_step5.png"
+  },
+  {
+    "categorySlug": "head-brain",
+    "typeId": "concussion",
+    "stepNumber": 1,
+    "imagePrompt": "Person sitting with head resting in hands",
+    "fileName": "head-brain_concussion_step1.png"
+  },
+  {
+    "categorySlug": "head-brain",
+    "typeId": "concussion",
+    "stepNumber": 2,
+    "imagePrompt": "Holding ice pack to forehead bump",
+    "fileName": "head-brain_concussion_step2.png"
+  },
+  {
+    "categorySlug": "head-brain",
+    "typeId": "concussion",
+    "stepNumber": 3,
+    "imagePrompt": "Doctor talking to conscious patient",
+    "fileName": "head-brain_concussion_step3.png"
+  },
+  {
+    "categorySlug": "head-brain",
+    "typeId": "concussion",
+    "stepNumber": 4,
+    "imagePrompt": "Watching patient's eyes",
+    "fileName": "head-brain_concussion_step4.png"
+  },
+  {
+    "categorySlug": "head-brain",
+    "typeId": "concussion",
+    "stepNumber": 5,
+    "imagePrompt": "Neurology clinic symbol",
+    "fileName": "head-brain_concussion_step5.png"
+  },
+  {
+    "categorySlug": "head-brain",
+    "typeId": "head-wound",
+    "stepNumber": 1,
+    "imagePrompt": "Wearing nitrile gloves",
+    "fileName": "head-brain_head-wound_step1.png"
+  },
+  {
+    "categorySlug": "head-brain",
+    "typeId": "head-wound",
+    "stepNumber": 2,
+    "imagePrompt": "Hand pressing gauze firmly on top of patient's head",
+    "fileName": "head-brain_head-wound_step2.png"
+  },
+  {
+    "categorySlug": "head-brain",
+    "typeId": "head-wound",
+    "stepNumber": 3,
+    "imagePrompt": "Wrapping bandage around head crown",
+    "fileName": "head-brain_head-wound_step3.png"
+  },
+  {
+    "categorySlug": "head-brain",
+    "typeId": "head-wound",
+    "stepNumber": 4,
+    "imagePrompt": "Shining penlight into eye",
+    "fileName": "head-brain_head-wound_step4.png"
+  },
+  {
+    "categorySlug": "head-brain",
+    "typeId": "head-wound",
+    "stepNumber": 5,
+    "imagePrompt": "Medical clinic symbol",
+    "fileName": "head-brain_head-wound_step5.png"
+  },
+  {
+    "categorySlug": "head-brain",
+    "typeId": "stroke",
+    "stepNumber": 1,
+    "imagePrompt": "Person smiling showing asymmetric mouth droop",
+    "fileName": "head-brain_stroke_step1.png"
+  },
+  {
+    "categorySlug": "head-brain",
+    "typeId": "stroke",
+    "stepNumber": 2,
+    "imagePrompt": "Person raising arms, left arm drifting down",
+    "fileName": "head-brain_stroke_step2.png"
+  },
+  {
+    "categorySlug": "head-brain",
+    "typeId": "stroke",
+    "stepNumber": 3,
+    "imagePrompt": "Speech bubble with jagged edges",
+    "fileName": "head-brain_stroke_step3.png"
+  },
+  {
+    "categorySlug": "head-brain",
+    "typeId": "stroke",
+    "stepNumber": 4,
+    "imagePrompt": "Dialing 999 emergency services screen",
+    "fileName": "head-brain_stroke_step4.png"
+  },
+  {
+    "categorySlug": "head-brain",
+    "typeId": "stroke",
+    "stepNumber": 5,
+    "imagePrompt": "Stroke patient lying in recovery position",
+    "fileName": "head-brain_stroke_step5.png"
+  },
+  {
+    "categorySlug": "head-brain",
+    "typeId": "seizure",
+    "stepNumber": 1,
+    "imagePrompt": "Placing folded towel under head of convulsing patient",
+    "fileName": "head-brain_seizure_step1.png"
+  },
+  {
+    "categorySlug": "head-brain",
+    "typeId": "seizure",
+    "stepNumber": 2,
+    "imagePrompt": "Pushing metal chair away from patient",
+    "fileName": "head-brain_seizure_step2.png"
+  },
+  {
+    "categorySlug": "head-brain",
+    "typeId": "seizure",
+    "stepNumber": 3,
+    "imagePrompt": "Looking at stopwatch",
+    "fileName": "head-brain_seizure_step3.png"
+  },
+  {
+    "categorySlug": "head-brain",
+    "typeId": "seizure",
+    "stepNumber": 4,
+    "imagePrompt": "Turning unconscious patient onto their side",
+    "fileName": "head-brain_seizure_step4.png"
+  },
+  {
+    "categorySlug": "head-brain",
+    "typeId": "seizure",
+    "stepNumber": 5,
+    "imagePrompt": "Kneeling beside patient comforting them",
+    "fileName": "head-brain_seizure_step5.png"
+  }
+]
